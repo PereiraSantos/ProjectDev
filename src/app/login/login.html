@@ -3,7 +3,7 @@
 
     <div class="login-card">
         <p>Gerenciamento de projetos</p>
-        <form (ngSubmit)="fazerLogin()">
+        <form (ngSubmit)="doLogin()">
             <div class="input-group">
                 <label for="email">Email</label>
                 <input type="text" name="email" [(ngModel)]="loginData.email" placeholder="seu@email.com" required>
@@ -19,3 +19,5 @@
         <a href="#" class="forgot-password">Esqueceu a senha?</a>
     </div>
 </body>
+
+<app-toast-container />

@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalComponent } from '../component/modal/modal.component';
-import { ToastService } from '../services/toast.service';
 import { FormsModule } from '@angular/forms';
+import { Project } from './project';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,19 +11,50 @@ import { FormsModule } from '@angular/forms';
     styleUrl: './dashboard.css',
 
 })
-export class Dashboard {
+export class Dashboard implements OnInit {
 
-    private toastService = inject(ToastService);
+    constructor(private location: Location) { }
+
+    ngOnInit(): void {
+        this.createList(this.getList('projeto'));
+    }
+
+    projects: Project[] = [];
 
     projectData = {
         nameProject: '',
         description: ''
     };
 
-    salvar() {
-        console.log(this.projectData.nameProject)
-        this.toastService.show('Usuário ou senha inválidos!', 'error');
+    createList(list: any[]) {
+        for (const project of list) {
+            this.projects.push(new Project(1, project['name'], project['descricao']));
+        }
+    }
 
+    salvar(modal: any) {
+        modal.fechar();
+        this.addItemToList('projeto', { 'name': this.projectData.nameProject, 'descricao': this.projectData.description });
+        this.refresh();
+    }
+
+    saveList(key: string, list: any[]): void {
+        localStorage.setItem(key, JSON.stringify(list));
+    }
+
+    getList(key: string): any[] {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : [];
+    }
+
+    addItemToList(key: string, newItem: any): void {
+        const list = this.getList(key);
+        list.push(newItem);
+        this.saveList(key, list);
+    }
+
+    refresh() {
+        window.location.reload();
     }
 
 }

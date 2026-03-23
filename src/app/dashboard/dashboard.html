@@ -1,10 +1,10 @@
 <div class="container-project">
     <div class="titulo-project">Projetos</div>
-    <button (click)="meuModal.abrir()" class="botao-add">+ Criar Projeto</button>
+    <button (click)="modal.abrir()" class="botao-add">+ Criar Projeto</button>
 </div>
 
-<app-modal #meuModal titulo="Novo Projeto">
-    <form (ngSubmit)="salvar()">
+<app-modal #modal titulo="Novo Projeto">
+    <form (ngSubmit)="salvar(modal)">
         <div class="input-group">
             <label for="nameProject">Nome do projeto</label>
             <input type="text" name="nameProject" [(ngModel)]="projectData.nameProject" required>
@@ -17,14 +17,21 @@
         </div>
 
         <div class="container-modal">
-            <button class="cancel-button" (click)="meuModal.fechar()">Cancelar</button>
+            <button class="cancel-button" (click)="modal.fechar()">Cancelar</button>
             <button type="submit" class="login-button">Criar</button>
         </div>
     </form>
-
-
 </app-modal>
 
-<div class="container-center">
-    <p>Nenhum projeto</p>
+<div class="container">
+    @for (item of projects; track item.name) {
+    <div class="card">
+        <h2 class="nome">{{ item.name }}</h2>
+        <p class="descricao">{{ item.description }}</p>
+    </div>
+    } @empty {
+    <div class="container-center">
+        <p>Nenhum projeto</p>
+    </div>
+    }
 </div>

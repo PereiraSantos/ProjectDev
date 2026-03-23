@@ -106,3 +106,43 @@ textarea {
     width: 100%;
     box-sizing: border-box;
 }
+
+
+body {
+    background-color: #f4f4f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100-vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 24px;
+    width: 260px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nome {
+    color: #333;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.descricao {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}

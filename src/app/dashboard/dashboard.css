@@ -123,7 +123,7 @@ body {
     gap: 20px;
     padding: 20px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
 }
 
 .card {
@@ -145,4 +145,18 @@ body {
     color: #666;
     line-height: 1.6;
     font-size: 0.95rem;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-task {
+    height: 30px;
+    background-color: white;
+    border-radius: 06px;
+    border: 1px solid rgba(0, 0, 255, 0.404);
+    color: rgba(71, 71, 245, 0.466);
+    cursor: pointer;
 }

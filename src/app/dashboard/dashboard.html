@@ -26,7 +26,11 @@
 <div class="container">
     @for (item of projects; track item.name) {
     <div class="card">
-        <h2 class="nome">{{ item.name }}</h2>
+        <div class="card-title">
+            <h2 class="nome">{{ item.name }}</h2>
+            <button class="button-task" (click)="showTask()">Tarefas</button>
+        </div>
+
         <p class="descricao">{{ item.description }}</p>
     </div>
     } @empty {
@@ -35,3 +39,7 @@
     </div>
     }
 </div>
+
+@if (isShowTask) {
+<app-task></app-task>
+}

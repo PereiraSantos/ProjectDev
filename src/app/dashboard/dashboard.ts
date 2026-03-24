@@ -3,10 +3,11 @@ import { ModalComponent } from '../component/modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { Project } from './project';
 import { Location } from '@angular/common';
+import { Task } from '../component/task/task.component';
 
 @Component({
     selector: 'app-dashboard',
-    imports: [ModalComponent, FormsModule],
+    imports: [ModalComponent, FormsModule, Task],
     templateUrl: './dashboard.html',
     styleUrl: './dashboard.css',
 
@@ -14,6 +15,8 @@ import { Location } from '@angular/common';
 export class Dashboard implements OnInit {
 
     constructor(private location: Location) { }
+
+    isShowTask: boolean = false;
 
     ngOnInit(): void {
         this.createList(this.getList('projeto'));
@@ -55,6 +58,10 @@ export class Dashboard implements OnInit {
 
     refresh() {
         window.location.reload();
+    }
+
+    showTask() {
+        this.isShowTask = !this.isShowTask;
     }
 
 }

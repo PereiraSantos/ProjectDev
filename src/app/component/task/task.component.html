@@ -1,1 +1,24 @@
-<p>ola task</p>
+<div class="container-button">
+    <button (click)="modal.abrir()" class="botao-add">+ Tarefa</button>
+    <button (click)="modal.fechar()" class="botao-delete">Excluir</button>
+</div>
+
+<app-modal #modal titulo="Novo Projeto">
+    <form (ngSubmit)="salvar(modal)">
+        <div class="input-group">
+            <label for="nameProject">Nome do projeto</label>
+            <input type="text" name="nameProject" [(ngModel)]="projectData.nameProject" required>
+        </div>
+
+        <div class="input-group">
+            <label for="description">Descrição</label>
+            <textarea rows="3" name="description" [(ngModel)]="projectData.description" placeholder="Descrição projeto"
+                required></textarea>
+        </div>
+
+        <div class="container-modal">
+            <button class="cancel-button" (click)="modal.fechar()">Cancelar</button>
+            <button type="submit" class="login-button">Criar</button>
+        </div>
+    </form>
+</app-modal>

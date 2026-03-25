@@ -1,0 +1,23 @@
+.botao-add {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.botao-delete {
+    padding: 10px 20px;
+    background-color: white;
+    color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 1px solid red;
+    border-radius: 6px;
+    margin-left: 20px;
+    margin-top: 20px;
+}

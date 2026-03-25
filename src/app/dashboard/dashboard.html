@@ -1,7 +1,28 @@
+@if (isShowTask) {
+<button class="button-task" (click)="showTask('')"> Voltar projeto {{ project }}</button>
+<app-task></app-task>
+} @else {
 <div class="container-project">
     <div class="titulo-project">Projetos</div>
     <button (click)="modal.abrir()" class="botao-add">+ Criar Projeto</button>
 </div>
+<div class="container">
+    @for (item of projects; track item.name) {
+    <div class="card">
+        <div class="card-title">
+            <h2 class="nome">{{ item.name }}</h2>
+            <button class="button-task" (click)="showTask(item.name)">Tarefas</button>
+        </div>
+
+        <p class="descricao">{{ item.description }}</p>
+    </div>
+    } @empty {
+    <div class="container-center">
+        <p>Nenhum projeto</p>
+    </div>
+    }
+</div>
+}
 
 <app-modal #modal titulo="Novo Projeto">
     <form (ngSubmit)="salvar(modal)">
@@ -22,24 +43,3 @@
         </div>
     </form>
 </app-modal>
-
-<div class="container">
-    @for (item of projects; track item.name) {
-    <div class="card">
-        <div class="card-title">
-            <h2 class="nome">{{ item.name }}</h2>
-            <button class="button-task" (click)="showTask()">Tarefas</button>
-        </div>
-
-        <p class="descricao">{{ item.description }}</p>
-    </div>
-    } @empty {
-    <div class="container-center">
-        <p>Nenhum projeto</p>
-    </div>
-    }
-</div>
-
-@if (isShowTask) {
-<app-task></app-task>
-}

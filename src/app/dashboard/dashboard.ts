@@ -17,6 +17,7 @@ export class Dashboard implements OnInit {
     constructor(private location: Location) { }
 
     isShowTask: boolean = false;
+    project: string = '';
 
     ngOnInit(): void {
         this.createList(this.getList('projeto'));
@@ -60,7 +61,8 @@ export class Dashboard implements OnInit {
         window.location.reload();
     }
 
-    showTask() {
+    showTask(value: string) {
+        this.project = value;
         this.isShowTask = !this.isShowTask;
     }
 

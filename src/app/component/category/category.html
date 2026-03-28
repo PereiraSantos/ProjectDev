@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-input">
+        <h2 class="card-titulo">Título do Card</h2>
+        <form (ngSubmit)="salvar()">
+            <div class="input-group">
+                <label for="nameProject">Título</label>
+                <input type="text" name="nameProject" [(ngModel)]="projectData.nameTask" required>
+            </div>
+
+            <div class="container-modal">
+                <button type="submit" class="button-add">Criar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="card-cor">
+        <p>Cor</p>
+        <div class="small-card red"></div>
+        <div class="small-card yellow"></div>
+        <div class="small-card green"></div>
+        <div class="small-card orange"></div>
+        <div class="small-card blue"></div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ModalComponent } from '../component/modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { Project } from './project';
@@ -10,6 +10,8 @@ import { Task } from '../component/task/task.component';
     imports: [ModalComponent, FormsModule, Task],
     templateUrl: './dashboard.html',
     styleUrl: './dashboard.css',
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 export class Dashboard implements OnInit {
@@ -24,6 +26,7 @@ export class Dashboard implements OnInit {
     }
 
     projects: Project[] = [];
+
 
     projectData = {
         nameProject: '',

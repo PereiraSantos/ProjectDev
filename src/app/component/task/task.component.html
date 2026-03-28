@@ -6,29 +6,35 @@
 <div class="container">
     <div>
         <p>A fazer</p>
-        @for (item of getStart(); track item.name) {
+        @for (item of jobs(); track item.id) {
+        @if (item.status === start) {
         <div class="card" (click)="open(modalStatus, item)">
             <h2 class="nome">{{ item.name }}</h2>
             <p class="descricao">{{ item.description }}</p>
         </div>
+        }
         }
     </div>
     <div>
         <p>Em Progresso</p>
-        @for (item of getMake(); track item.name) {
+        @for (item of jobs(); track item.id) {
+        @if (item.status === make) {
         <div class="card" (click)="open(modalStatus, item)">
             <h2 class="nome">{{ item.name }}</h2>
             <p class="descricao">{{ item.description }}</p>
         </div>
         }
+        }
     </div>
     <div>
         <p>Concluído</p>
-        @for (item of getFinish(); track item.name) {
+        @for (item of jobs(); track item.id) {
+        @if (item.status === finish) {
         <div class="card" (click)="open(modalStatus, item)">
             <h2 class="nome">{{ item.name }}</h2>
             <p class="descricao">{{ item.description }}</p>
         </div>
+        }
         }
     </div>
 </div>
